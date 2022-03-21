@@ -1,9 +1,11 @@
+
+/***
+ * movie parsing
+ * if you don't know what's going on here, look at the lvm's code
+ * ffdec does a great job with that
+ */
 const themeFolder = process.env.THEME_FOLDER;
-const colder = process.env.CACHÉ_FOLDER;
-const mp3Duration = require('mp3-duration');
 const char = require('../character/main');
-const ttsInfo = require('../tts/info');
-const caché = require('../data/caché');
 const source = process.env.CLIENT_URL;
 const header = process.env.XML_HEADER;
 const get = require('../request/get');
