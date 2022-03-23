@@ -119,7 +119,7 @@ module.exports = function (req, res, url) {
 					tray: "custom",
 					tlang: "en_US",
 					ut: 60,
-					apiserver: "/",
+					apiserver: "http://localhost:4343/",
 					storePath: STORE_URL + "/<store>",
 					clientThemePath: CLIENT_URL + "/<client_theme>",
 				},
