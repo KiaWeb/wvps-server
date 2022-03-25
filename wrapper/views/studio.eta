@@ -19,11 +19,10 @@
 		<nav id="importer">
 			<nav id="import_head">
 				<div>
-					<h3 id="import-media">Import Media</h3>
+					<label id="import-toggle" for="importer-files" class="button_big">UPLOAD FILES</label>
 					<h3 id="close-button" onclick="hideImporter()">✖</h3>
 				</div>
 				<form>
-					<label id="import-toggle" for="importer-files" class="button_big">UPLOAD FILES</label>
 					<input id="importer-files" type="file" name="file" title="Upload Files" style="display:none" />
 				</form>
 			</nav>

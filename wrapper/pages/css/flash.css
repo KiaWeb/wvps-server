@@ -33,40 +33,37 @@ importer
 **/
 #import_head {
 	/* style */
-	background: linear-gradient(#333, #111);
-	box-shadow: 0 -2px 10px 0 #000;
+	background: #252525;
 	color: #fff;
 	/* layout */
 	text-align: center;
 	padding: 8px;
-	height: 104px;
 }
 #import_head>:nth-child(1) {
 	display: flex;
 	justify-content: space-between;
 }
-#import_head>:nth-child(1)>h3 { margin: 0 }
-#importer form { margin: 8px }
+#import_head>:nth-child(1)>h3 { margin: 6px; }
+#importer form { margin: 0 }
 #importer {
 	/* style */
-	background: #fff;
+	background: #edf2f6;
 	box-shadow: 0px 0px 8px 0 #00000028;
-	transition: 0.5s ease;
 	/* layout */
 	z-index: 1;
-	overflow: hidden;
-	width: 0;
+	display: none;
+	width: 400px;
 }
+html.dark #importer { background: #222 }
 /* queue */
-#importer-queue {
-	border-top: 1px solid #e2e7ed;
-}
+#importer-queue {  border-top: 1px solid #e2e7ed  }
+html.dark #importer-queue { border-color: #3a3a3a }
 .importer_asset {
 	border-bottom: 1px solid #e2e7ed;
 	margin-bottom: 5px;
 }
+html.dark .importer_asset { border-color: #3a3a3a }
 .asset_metadata {
-	background: #edf2f6;
 	display: flex;
 	padding: 7px;
 }
@@ -86,6 +83,7 @@ importer
 .import_as {
 	background: #fff;
 }
+html.dark .importer_asset { border-color: #3a3a3a }
 .import_as a {
 	display: block;
 	padding: 5px 20px;

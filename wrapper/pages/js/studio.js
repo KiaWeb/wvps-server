@@ -26,7 +26,7 @@ function showImporter() {
 		case false:
 		default: {
 			importerVisible = true;
-			importer.css("width", "400px");
+			importer.show();
 			if (!importer.data("importer"))
 				importer.data("importer", new AssetImporter(importer))
 			studio.openYourLibrary();
@@ -36,7 +36,7 @@ function showImporter() {
 }
 function hideImporter() {
 	importerVisible = false;
-	importer.css("width", "");
+	importer.hide();
 }
 function initPreviewPlayer(dataXmlStr, startFrame, containsChapter, themeList) {
 	movieDataXmlStr = dataXmlStr;
