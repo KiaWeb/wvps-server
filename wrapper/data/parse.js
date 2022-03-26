@@ -136,9 +136,8 @@ function name2Font(font) {
 	}
 }
 
-function meta2Xml(m) {
+function meta2Xml(v) {
 	var response;
-	const v = m.data;
 	switch (v.type) {
 		case "char": {
 			response = `<char id="${v.id}" enc_asset_id="${v.id}" name="Untitled" cc_theme_id="${v.themeId}" thumbnail_url="char_default.png" copyable="Y"><tags>${v.tags}</tags></char>`;
@@ -166,15 +165,6 @@ function meta2Xml(m) {
 		}
 	};
 	return response;
-}
-
-function useBase64(aId) {
-	switch (aId.substr(aId.lastIndexOf('.') + 1)) {
-		case 'xml':
-			return false;
-		default:
-			return true;
-	}
 }
 
 module.exports = {
@@ -242,7 +232,7 @@ module.exports = {
 						console.log(pieces);
 						if (!zip[fileName]) {
 							var buff = asset.load(pieces[2]);
-							var meta = asset.meta(false, pieces[2]);
+							var meta = asset.meta(pieces[2]);
 							fUtil.addToZip(zip, fileName, buff);
 							ugcString += meta2Xml(meta);
 							themes[pieces[0]] = true;
@@ -269,26 +259,30 @@ module.exports = {
 								var file = piece.childNamed("file");
 								if (!file) continue;
 								var val = file.val;
+								// fix the file name for the lvm
 								var pieces = val.split(".");
+								var ext = pieces.pop();
+								pieces.splice(1, 0, tag);
+								pieces[pieces.length - 1] += `.${ext}`;
 
 								if (pieces[0] == "ugc") {
-									var ext = pieces.pop();
-									pieces.splice(1, 0, tag)
-
+									console.log(pieces)
 									var fileName = pieces.join(".") + `.${ext}`;
+									console.log(fileName)
 									if (!zip[fileName]) {
 										var buff = asset.load(pieces[2]);
-										var meta = asset.meta(false, pieces[2]);
+										var meta = asset.meta(pieces[2]);
 										fUtil.addToZip(zip, fileName, buff);
 										ugcString += meta2Xml(meta);
 										themes[pieces[0]] = true;
 									}
 								} else {
-									var ext = pieces.pop();
-									pieces.splice(1, 0, tag);
-									pieces[pieces.length - 1] += `.${ext}`;
+									// add extension to filename
+									
+									console.log(pieces)
 
 									var fileName = pieces.join(".");
+									console.log(fileName)
 									if (!zip[fileName]) {
 										var buff = await get(`${store}/${pieces.join("/")}`);
 										fUtil.addToZip(zip, fileName, buff);
@@ -309,7 +303,7 @@ module.exports = {
 
 										try {
 											buffer = await char.load(id);
-											const meta = asset.meta(false, id);
+											const meta = asset.meta(id);
 											fileName = `${theme}.char.${id}.xml`;
 											if (theme == 'ugc')
 												ugcString += meta2Xml(meta);

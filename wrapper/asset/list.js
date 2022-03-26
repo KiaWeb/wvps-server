@@ -33,7 +33,7 @@ async function listAssets(data) {
 				"status": "ok",
 				"data": {
 					"xml": `${header}<ugc more="0">${files
-						.map(v => `<background subtype="0" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" asset_url="/assets/${v.file}"/>`)
+						.map(v => `<background subtype="0" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" asset_url="/assets/${v.id}"/>`)
 						.join("")}</ugc>`
 				}
 			};
@@ -58,7 +58,7 @@ async function listAssets(data) {
 					"status": "ok",
 					"data": {
 						"xml": `${header}<ugc more="0">${files
-							.map(v => `<prop subtype="video" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`)
+							.map(v => `<prop subtype="video" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.id}"/>`)
 							.join("")}</ugc>`
 					}
 				};
@@ -68,8 +68,8 @@ async function listAssets(data) {
 					"status": "ok",
 					"data": {
 						"xml": `${header}<ugc more="0">${files
-							.map(v => `<prop subtype="0" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`)
-							.join("")}</ugc>`
+							.map(v => `<prop subtype="0" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.id}"/>`)
+							.join("")}<folder id="fidogd" name="DIE"/></ugc>`
 					}
 				};
 			}
@@ -81,7 +81,7 @@ async function listAssets(data) {
 				"status": "ok",
 				"data": {
 					"xml": `${header}<ugc more="0">${files
-						.map(v => `<sound subtype="${v.subtype}" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" duration="${v.duration}" downloadtype="progressive"/>`)
+						.map(v => `<sound subtype="${v.subtype}" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" duration="${v.duration}" downloadtype="progressive"/>`)
 						.join("")}</ugc>`
 				}
 			};

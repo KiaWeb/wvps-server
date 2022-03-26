@@ -36,35 +36,27 @@ module.exports = {
 			})
 		return match ? fs.readFileSync(`${folder}/${match}`) : null;
 	},
-	meta(verse, aId) {
+	meta(aId) {
 		const met = DB.get().assets.find(i => i.id == aId);
 		if (!met) {
 			console.error("Asset metadata doesn't exist! Asset id: " + aId);
-			return { status: "invalid", message: "invalid_asset" };
+			throw "Asset metadata doesn't exist!";
 		}
-		return { // return only the important metadata
-			status: "ok",
-			data: met
-		};
+		return met;
 	},
 	save(buf, { type, subtype, title, duration, ext, tId }) {
 		// save asset info
 		const aId = fUtil.generateId();
 		const db = DB.get();
 		db.assets.unshift({ // base info, can be modified by the user later
-			id: aId,
+			id: `${aId}.${ext}`,
 			enc_asset_id: aId,
 			themeId: tId,
 			type: type,
 			subtype: subtype,
 			title: title,
-			published: "",
-			share: {
-				type: "none"
-			},
 			tags: "",
-			duration: duration,
-			file: `${aId}.${ext}`
+			duration: duration
 		});
 		DB.save(db);
 		// save the file
@@ -76,8 +68,6 @@ module.exports = {
 		const db = DB.get();
 		const met = db.assets.find(i => i.id == aId);
 		met.title = newInf.title;
-		met.published = newInf.published;
-		met.share = newInf.share;
 		met.tags = newInf.tags;
 		DB.save(db);
 		return true;

@@ -133,6 +133,11 @@ class AssetImporter {
 						</div>
 					</div>
 				`).appendTo(this.queue);
+				const fr = new FileReader();
+				fr.addEventListener("load", e => {
+					el.find("img").attr("src", e.target.result)
+				})
+				fr.readAsDataURL(file)
 				break;
 			}
 		}
@@ -151,21 +156,12 @@ class ImporterFile {
 		this.initialize();
 	}
 	initialize() {
-		switch (this.ext) {
-			case "jpg":
-			case "png": { // load image preview
-				const fr = new FileReader();
-				fr.addEventListener("load", (e) => {
-					this.el.find("img").attr("src", e.target.result)
-				})
-				fr.readAsDataURL(this.file)
-			}
-		}
 		this.el.find("[type]").on("click", (event) => {
 			const el = $(event.target);
 			const type = el.attr("type");
 			const t = this.typeFickser(type);
-			this.upload(this.file, t);
+			const name = prompt("What do you want this asset to be called?", this.file.name);
+			this.upload(name, t);
 		});
 	}
 	typeFickser(type) {
@@ -181,9 +177,10 @@ class ImporterFile {
 			}
 		}
 	}
-	async upload(file, type) { // adds a file to the queue
+	async upload(name, type) {
 		var b = new FormData();
-		b.append("import", file);
+		b.append("import", this.file);
+		b.append("name", name)
 		b.append("type", type.type);
 		b.append("subtype", type.subtype);
 		$.ajax({
