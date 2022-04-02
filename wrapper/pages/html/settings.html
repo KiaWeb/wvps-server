@@ -42,17 +42,6 @@
 							<a href="#" data-triggers="prop">Props</a>
 							<a href="#" data-triggers="sound">Sounds</a>
 						</div>
-						<nav class="tab" data-trigger="features">
-							<h2>Features</h2>
-							<p>Short themelist: <span id="shortthemelist"></span></p>
-						</nav>
-						<nav class="tab" data-trigger="appearance">
-							<h2>Appearance</h2>
-							<p>Dark mode: <span id="darkmode"></span></p>
-						</nav>
-						<nav class="tab" data-trigger="library">
-							<h2>Features</h2>
-						</nav>
 					</nav>
 				</nav>
 			</nav>
@@ -72,10 +61,14 @@
 		}
 		// Toggling
 		$("span").click(function (event) {
+			if (event.target.id == 'darkmode')
+				toggleDarkMode();
 			if (!$.cookie(event.target.id))
-				$.cookie(event.target.id, 1)
+				$.cookie(event.target.id, 1);
 			else
-				$.removeCookie(event.target.id)
+				$.removeCookie(event.target.id);
+			getCookieData("darkmode");
+			getCookieData("shortthemelist");
 		});
 		getCookieData("darkmode");
 		getCookieData("shortthemelist");
