@@ -48,7 +48,7 @@
 		</main>
 	</body>
 	<script>
-		// Add indicator
+		// add indicator
 		function getCookieData(cookieName) {
 			if ($.cookie(cookieName)) {
 				$("#" + cookieName).css("color", "green");
@@ -57,14 +57,14 @@
 				$("#" + cookieName).css("color", "red");
 				$("#" + cookieName).html("Off");
 			}
-			return true
+			return true;
 		}
-		// Toggling
+		// toggling
 		$("span").click(function (event) {
-			if (event.target.id == 'darkmode')
+			if (event.target.id == "darkmode")
 				toggleDarkMode();
 			if (!$.cookie(event.target.id))
-				$.cookie(event.target.id, 1);
+				$.cookie(event.target.id, 1, { path: "/" });
 			else
 				$.removeCookie(event.target.id);
 			getCookieData("darkmode");
@@ -72,6 +72,5 @@
 		});
 		getCookieData("darkmode");
 		getCookieData("shortthemelist");
-
 	</script>
 </html>
