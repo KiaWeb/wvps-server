@@ -5,15 +5,15 @@
 /**
  * set dark mode
  */
-if ($.cookie("darkmode")) {
-	toggleDarkMode()
+if (localStorage.getItem("darkmode")) {
+	toggleDarkMode();
 }
 
 function toggleDarkMode() {
 	if ($("html").hasClass("dark")) 
 		$("html").removeClass("dark");
 	else
-		$("html").addClass("dark")
+		$("html").addClass("dark");
 }
 
 
@@ -25,7 +25,7 @@ window.addEventListener('load', event => {
 		const clicked = $(event.target);
 		// get parent/siblings
 		const tabPanel = clicked.parents(".tabs_contain");
-		console.log(tabPanel)
+		console.log(tabPanel);
 		const buttons = tabPanel.find(".tab_buttons").children("a");
 		const navs = tabPanel.children("nav");
 		// get clicked
@@ -35,7 +35,7 @@ window.addEventListener('load', event => {
 		buttons.removeClass("selected");
 		clicked.addClass("selected");
 		// show nav
-		navs.hide()
+		navs.hide();
 		triggered.show();
 	});
 })
