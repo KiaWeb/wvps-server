@@ -43,19 +43,19 @@ No members of the original team are officially working on Offline, even if they 
 
 Project Lead will have (PL) on their name and developers will have (D) on their name, to show they are officially working on Revision. Everyone else has simply contributed something at some point, or left the development team.
 Wrapper: Offline credits:
-| Name             | Contribution                                           |
-| ---------------- | -------------------------------------------------------|
-| octanuary (PL)   | Wrapper: Offline (Revision)                            |
-| GoTest334        | Current W:O Project Lead                               |
-| Benson           | Wrapper: Offline                                       |
-| NathanSaturnBOI  | W:O Logo                                               |
-| Blukas/GoTube    | Mega Comedy World 2                                    |
-| VisualPlugin     | Text to speech voices                                  |
-| creepyjokes2000  | Waveform fix, improved actions                         |
-| JoshAnimate      | Headgear fix                                           |
-| RegularSpark     | Fixing 1.2.3 to actually work, truncated themelist     |
-| KrisAnimate      | Chromium parameter                                     |
-| PoleyMagik       | Client Modifications                                   |
+| Name                          | Contribution                                           |
+| ----------------------------- | -------------------------------------------------------|
+| octanuary (PL)                | Wrapper: Offline (Revision)                            |
+| GoTest334                     | Current W:O Project Lead                               |
+| Benson (Child Groom)          | Wrapper: Offline                                       |
+| NathanSaturnBOI               | W:O Logo                                               |
+| Blukas/GoTube                 | Mega Comedy World 2                                    |
+| VisualPlugin                  | Text to speech voices                                  |
+| creepyjokes2000               | Waveform fix, improved actions                         |
+| JoshAnimate                   | Headgear fix                                           |
+| sparrkz (D)                   | Fixing 1.2.3 to actually work, truncated themelist     |
+| KrisAnimate                   | Chromium parameter                                     |
+| PoleyMagik                    | Client Modifications                                   |
 
 These are unaffiliated people that they haven't directly done anything for the project (and probably don't even know it exists) but still deserve credit for their things. Kinda like a shoutout but in a project's readme. ***Please do not contact them about Wrapper: Offline.***
 | Name               | Contribution                     |
