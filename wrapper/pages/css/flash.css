@@ -76,7 +76,7 @@ html.dark .importer_asset { border-color: #3a3a3a }
 .asset_preview { height: 40px; margin-right: 6px }
 .asset_name {
 	padding: 1px 4px;
-	background-color: #dfdfdf;
+	background-color: #00000011;
 	outline: #666 auto 2px;
 	margin: 0;
 	font-weight: bold;
