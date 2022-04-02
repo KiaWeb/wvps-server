@@ -69,10 +69,16 @@ html.dark .importer_asset { border-color: #3a3a3a }
 }
 /* asset icon */
 .asset_preview { height: 40px; margin-right: 6px }
-.importer_asset h4 {
+.asset_name {
+	padding: 1px 4px;
+	background-color: #dfdfdf;
+	outline: #666 auto 2px;
 	margin: 0;
 	font-weight: bold;
 	font-size: 14px;
+}
+.asset_name:focus {
+	outline: var(--blue) auto 2px;
 }
 .importer_asset p {
 	color: #858e95;

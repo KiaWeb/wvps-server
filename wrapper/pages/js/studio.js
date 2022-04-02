@@ -123,7 +123,7 @@ class AssetImporter {
 						<div class="asset_metadata">
 							<img class="asset_preview" src="/pages/img/importer/image.png" />
 							<div>
-								<h4>${file.name}</h4>
+								<h4 contenteditable="true" class="asset_name">${file.name}</h4>
 								<p class="asset_subtype">${filesize(file.size)} | Import as...</p>
 							</div>
 						</div>
@@ -160,7 +160,7 @@ class ImporterFile {
 			const el = $(event.target);
 			const type = el.attr("type");
 			const t = this.typeFickser(type);
-			const name = prompt("What do you want this asset to be called?", this.file.name);
+			const name = $(event.target).parents('.importer_asset').find('.asset_name').text();
 			this.upload(name.replace(/\s/g, '_'), t);
 		});
 	}
@@ -177,7 +177,11 @@ class ImporterFile {
 			}
 		}
 	}
-	async upload(name, type) {
+	async upload(passedname, type) {
+		var name = passedname;
+		if (name == "") {
+			name = "unnamed" + Math.random().toString().substring(2, 8); 
+		}
 		var b = new FormData();
 		b.append("import", this.file);
 		b.append("name", name)
