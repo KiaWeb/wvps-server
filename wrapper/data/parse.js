@@ -144,7 +144,7 @@ function meta2Xml(v) {
 			break;
 		}
 		case "bg": {
-			response = `<background subtype="0" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" asset_url="/assets/${v.file}"/>`
+			response = `<background subtype="0" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" asset_url="/assets/${v.id}"/>`
 			break;
 		}
 		case "movie": {
@@ -153,14 +153,14 @@ function meta2Xml(v) {
 		}
 		case "prop": {
 			if (v.subtype == "video") {
-				response = `<prop subtype="video" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`;
+				response = `<prop subtype="video" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`;
 			} else {
-				response = `<prop subtype="0" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`;
+				response = `<prop subtype="0" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" holdable="0" headable="0" placeable="1" facing="left" width="0" height="0" asset_url="/api_v2/assets/${v.file}"/>`;
 			}
 			break;
 		}
 		case "sound": {
-			response = `<sound subtype="${v.subtype}" id="${v.file}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" duration="${v.duration}" downloadtype="progressive"/>`;
+			response = `<sound subtype="${v.subtype}" id="${v.id}" enc_asset_id="${v.id}" name="${v.title}" enable="Y" duration="${v.duration}" downloadtype="progressive"/>`;
 			break;
 		}
 	};
@@ -266,15 +266,20 @@ module.exports = {
 								pieces[pieces.length - 1] += `.${ext}`;
 
 								if (pieces[0] == "ugc") {
-									console.log(pieces)
-									var fileName = pieces.join(".") + `.${ext}`;
-									console.log(fileName)
-									if (!zip[fileName]) {
-										var buff = asset.load(pieces[2]);
-										var meta = asset.meta(pieces[2]);
-										fUtil.addToZip(zip, fileName, buff);
-										ugcString += meta2Xml(meta);
-										themes[pieces[0]] = true;
+									try {
+										console.log(pieces)
+										var fileName = pieces.join(".");
+										console.log(fileName)
+										if (!zip[fileName]) {
+											var buff = asset.load(pieces[2]);
+											var meta = asset.meta(pieces[2]);
+											fUtil.addToZip(zip, fileName, buff);
+											ugcString += meta2Xml(meta);
+											themes[pieces[0]] = true;
+										}
+									} catch (err) {
+										if (process.env.NODE_ENV == "dev") throw err;
+										console.error("Error getting asset: " + err);
 									}
 								} else {
 									// add extension to filename
