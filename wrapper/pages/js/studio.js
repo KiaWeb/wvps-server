@@ -161,7 +161,7 @@ class ImporterFile {
 			const type = el.attr("type");
 			const t = this.typeFickser(type);
 			const name = prompt("What do you want this asset to be called?", this.file.name);
-			this.upload(name, t);
+			this.upload(name.replace(/\s/g, '_'), t);
 		});
 	}
 	typeFickser(type) {

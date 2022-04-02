@@ -37,7 +37,7 @@ importer
 	color: #fff;
 	/* layout */
 	text-align: center;
-	padding: 8px;
+	padding: 1px;
 }
 #import_head>:nth-child(1) {
 	display: flex;
