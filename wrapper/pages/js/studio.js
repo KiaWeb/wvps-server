@@ -58,7 +58,7 @@ class AssetImporter {
 	constructor(importer) {
 		this.importer = importer;
 		this.queue = importer.find("#importer-queue");
-		this.config = { maxsize: false }
+		this.config = { maxsize: false };
 		this.initialize();
 	}
 	initialize() {
@@ -89,7 +89,7 @@ class AssetImporter {
 	addFiles(file) { //adds a file to the queue
 		//image importing
 		const ext = file.name.substring(file.name.lastIndexOf(".") + 1);
-		const maxsize = this.config.maxsize
+		const maxsize = this.config.maxsize;
 		if (maxsize && file.size > maxsize) return; // check if file is too large
 		var validFileType = false;
 		let el;
@@ -135,14 +135,14 @@ class AssetImporter {
 				`).appendTo(this.queue);
 				const fr = new FileReader();
 				fr.addEventListener("load", e => {
-					el.find("img").attr("src", e.target.result)
+					el.find("img").attr("src", e.target.result);
 				})
-				fr.readAsDataURL(file)
+				fr.readAsDataURL(file);
 				break;
 			}
 		}
 		if (!validFileType) {
-			console.error("Invalid file type!")
+			console.error("Invalid file type!");
 			return;
 		}
 		const request = new ImporterFile(file, el, ext);
@@ -152,7 +152,7 @@ class ImporterFile {
 	constructor(file, element, ext) {
 		this.file = file;
 		this.el = element;
-		this.ext = ext
+		this.ext = ext;
 		this.initialize();
 	}
 	initialize() {
@@ -169,19 +169,18 @@ class ImporterFile {
 			case "bgmusic":
 			case "soundeffect":
 			case "voiceover": {
-				return { type: "sound", subtype: type }
+				return { type: "sound", subtype: type };
 			}
 			case "bg":
 			case "prop": {
-				return { type: type, subtype: 0 }
+				return { type: type, subtype: 0 };
 			}
 		}
 	}
 	async upload(passedname, type) {
 		var name = passedname;
-		if (name == "") {
+		if (name == "")
 			name = "unnamed" + Math.random().toString().substring(2, 8); 
-		}
 		var b = new FormData();
 		b.append("import", this.file);
 		b.append("name", name)
