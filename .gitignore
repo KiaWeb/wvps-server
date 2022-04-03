@@ -139,3 +139,4 @@ dist
 *.sfk
 *.sfap0
 utilities/config.bat
+wrapper/die.zip
