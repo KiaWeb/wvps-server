@@ -227,8 +227,9 @@ module.exports = {
 					else if (val.startsWith('ugc.')) {
 						var ext = pieces.pop();
 						pieces.splice(1, 0, element.name)
+						pieces[pieces.length - 1] += `.${ext}`;
 
-						var fileName = pieces.join(".") + `.${ext}`;
+						var fileName = pieces.join(".");
 						console.log(pieces);
 						if (!zip[fileName]) {
 							var buff = asset.load(pieces[2]);

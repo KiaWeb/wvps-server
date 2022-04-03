@@ -102,7 +102,7 @@ class AssetImporter {
 						<div class="asset_metadata">
 							<img class="asset_preview" src="/pages/img/importer/sound.png" />
 							<div>
-								<h4>${file.name}</h4>
+								<h4 contenteditable="true" class="asset_name">${file.name}</h4>
 								<p class="asset_subtype">${filesize(file.size)} | Import as...</p>
 							</div>
 						</div>
